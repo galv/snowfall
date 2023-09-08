@@ -18,6 +18,7 @@ class LFMMILoss(nn.Module):
     def __init__(
             self,
             graph_compiler: MmiTrainingGraphCompiler,
+            # What is P?
             P: k2.Fsa,
             den_scale: float = 1.0,
     ):
@@ -68,12 +69,14 @@ class LFMMILoss(nn.Module):
         num_den_graphs_indexes = torch.stack(
             [num_graphs_indexes, den_graphs_indexes]).t().reshape(-1).to(device)
 
+        # So this is done on the GPU...
         num_den_reordered_graphs = k2.index(num_den_graphs, num_den_graphs_indexes)
 
         # [[0, 1, 2, ...]]
         a_to_b_map = torch.arange(num_fsas, dtype=torch.int32).reshape(1, -1)
 
         # [[0, 1, 2, ...]] -> [0, 0, 1, 1, 2, 2, ... ]
+        # Why?
         a_to_b_map = a_to_b_map.repeat(2, 1).t().reshape(-1).to(device)
 
         num_den_lats = k2.intersect_dense(num_den_reordered_graphs,
@@ -81,8 +84,9 @@ class LFMMILoss(nn.Module):
                                           output_beam=10.0,
                                           a_to_b_map=a_to_b_map)
 
+        # Why is this using double by default?
         num_den_tot_scores = num_den_lats.get_tot_scores(
-            log_semiring=True, use_double_scores=True)
+            log_semiring=True, use_double_scores=False)
 
         num_tot_scores = num_den_tot_scores[::2]
         den_tot_scores = num_den_tot_scores[1::2]

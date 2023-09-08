@@ -1,0 +1,77 @@
+Downloading file '3-gram.pruned.1e-7.arpa.gz' into 'data/local/lm'...
+'3-gram.pruned.1e-7.arpa.gz' already exists and appears to be complete
+Downloading file '4-gram.arpa.gz' into 'data/local/lm'...
+'4-gram.arpa.gz' already exists and appears to be complete
+Downloading file 'librispeech-vocab.txt' into 'data/local/lm'...
+'librispeech-vocab.txt' already exists and appears to be complete
+Downloading file 'librispeech-lexicon.txt' into 'data/local/lm'...
+'librispeech-lexicon.txt' already exists and appears to be complete
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):79
+[I] Reading \data\ section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \1-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \2-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \3-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):79
+[I] Reading \data\ section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \1-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \2-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \3-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):79
+[I] Reading \data\ section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \1-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \2-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):138
+[E] line 2448361 [-3.342]: invalid directive, expecting '\3-grams:'
+./run.sh: line 58: 13095 Aborted                 (core dumped) python3 -m kaldilm --read-symbol-table="data/lang_nosp/words.txt" --disambig-symbol='#0' --max-order=4 data/local/lm/lm_fglarge.arpa > data/lang_nosp/G_4_gram.fst.txt
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):79
+[I] Reading \data\ section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \1-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \2-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \3-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):79
+[I] Reading \data\ section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \1-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \2-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \3-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):79
+[I] Reading \data\ section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \1-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \2-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \3-grams: section.
+/tmp/easy_install-mywrk466/kaldilm-1.3/kaldilm/csrc/arpa_file_parser.cc:void kaldilm::ArpaFileParser::Read(std::istream&):140
+[I] Reading \4-grams: section.
+
+To load G:
+Use::
+  with open('data/lang_nosp/G.fst.txt') as f:
+    G = k2.Fsa.from_openfst(f.read(), acceptor=False)
+
+################################################################################
+### WARNING, path does not exist: KALDI_ROOT=/mnt/matylda5/iveselyk/Tools/kaldi-trunk
+###          (please add 'export KALDI_ROOT=<your_path>' in your $HOME/.profile)
+###          (or run as: KALDI_ROOT=<your_path> python <your_script>.py)
+################################################################################
+
+Traceback (most recent call last):
+  File "/home/dgalvez/code/asr/snowfall/egs/librispeech/asr/simple_v1/./prepare.py", line 16, in <module>
+    from snowfall.common import str2bool
+  File "/home/dgalvez/code/asr/snowfall/snowfall/common.py", line 228, in <module>
+    def get_phone_symbols(symbol_table: k2.SymbolTable,
+AttributeError: module 'k2' has no attribute 'SymbolTable'

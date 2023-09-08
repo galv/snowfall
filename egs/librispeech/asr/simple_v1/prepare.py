@@ -67,7 +67,7 @@ def get_parser():
         '--num-jobs',
         type=int,
         default=min(15, os.cpu_count()),
-        help='When enabled, use 960h LibriSpeech.')
+        help='fix me')
     parser.add_argument(
         '--full-libri',
         type=str2bool,
@@ -79,8 +79,7 @@ def get_parser():
 def main():
     args = get_parser().parse_args()
     if args.full_libri:
-        dataset_parts = ('dev-clean', 'dev-other', 'test-clean', 'test-other',
-                         'train-clean-100', 'train-clean-360', 'train-other-500')
+        dataset_parts = ('train-clean-360', 'train-other-500')
     else:
         dataset_parts = ('dev-clean', 'dev-other', 'test-clean', 'test-other', 'train-clean-100')
 
@@ -90,12 +89,14 @@ def main():
         Path('/export/corpora5/LibriSpeech'),
         Path('/home/storage04/zhuangweiji/data/open-source-data/librispeech/LibriSpeech'),
         Path('/root/fangjun/data/librispeech/LibriSpeech'),
-        Path('/export/common/data/corpora/ASR/openslr/SLR12/LibriSpeech')
+        Path('/export/common/data/corpora/ASR/openslr/SLR12/LibriSpeech'),
+        Path('/home/dgalvez/data/librispeech/LibriSpeech'),
     )
     musan_dir = locate_corpus(
         Path('/export/corpora5/JHU/musan'),
         Path('/export/common/data/corpora/MUSAN/musan'),
         Path('/root/fangjun/data/musan'),
+        Path('/home/dgalvez/data/musan/musan'),
     )
 
     output_dir = Path('exp/data')

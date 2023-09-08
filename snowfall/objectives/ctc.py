@@ -33,9 +33,10 @@ class CTCLoss(nn.Module):
 
         num_lats = k2.intersect_dense(num_graphs, dense_fsa_vec, 10.0)
 
+        # What calls intersect proper?
         num_tot_scores = num_lats.get_tot_scores(
             log_semiring=True,
-            use_double_scores=True
+            use_double_scores=False
         )
         tot_scores = num_tot_scores
         tot_score, tot_frames, all_frames = get_tot_objf_and_num_frames(

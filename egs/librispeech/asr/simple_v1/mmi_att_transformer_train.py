@@ -86,6 +86,7 @@ def get_objf(batch: Dict,
         if (ali_model is not None and global_batch_idx_train is not None and
                 global_batch_idx_train * accum_grad < 4000):
             with torch.no_grad():
+                # Why are we doing this? Very confusing...
                 ali_model_output = ali_model(feature)
             # subsampling is done slightly differently, may be small length
             # differences.
@@ -93,7 +94,7 @@ def get_objf(batch: Dict,
             # scale less than one so it will be encouraged
             # to mimic ali_model's output
             ali_model_scale = 500.0 / (global_batch_idx_train*accum_grad + 500)
-            nnet_output = nnet_output.clone()  # or log-softmax backprop will fail.
+            nnet_output = nnet_output.clone()  # or log-softmax backprop will fail. Why?
             nnet_output[:, :,:min_len] += ali_model_scale * ali_model_output[:, :,:min_len]
 
         # nnet_output is [N, C, T]
@@ -224,7 +225,8 @@ def train_one_epoch(dataloader: torch.utils.data.DataLoader,
     prev_timestamp = datetime.now()
 
     model.train()
-    for batch_idx, batch in enumerate(dataloader):
+    import tqdm
+    for batch_idx, batch in enumerate(tqdm.tqdm(dataloader)):
         forward_count += 1
         if forward_count == accum_grad:
             is_update = True
@@ -283,9 +285,9 @@ def train_one_epoch(dataloader: torch.utils.data.DataLoader,
                 tb_writer.add_scalar('train/current_batch_average_objf',
                                      curr_batch_objf / (curr_batch_frames + 0.001),
                                      global_batch_idx_train)
-            # if batch_idx >= 10:
-            #    print("Exiting early to get profile info")
-            #    sys.exit(0)
+            if batch_idx >= 10:
+               print("Exiting early to get profile info")
+               sys.exit(0)
 
         if batch_idx > 0 and batch_idx % 200 == 0:
             total_valid_objf, total_valid_frames, total_valid_all_frames = get_validation_objf(
@@ -508,6 +510,7 @@ def run(rank, world_size, args):
             num_classes=len(phone_ids) + 1,  # +1 for the blank symbol
             subsampling_factor=4)
 
+        # Why is there an alignment model? What does it do???
         ali_model_fname = Path(f'exp-lstm-adam-ctc-musan/epoch-{args.ali_model_epoch}.pt')
         assert ali_model_fname.is_file(), \
                 f'ali model filename {ali_model_fname} does not exist!'
@@ -623,7 +626,7 @@ def run(rank, world_size, args):
                            local_rank=rank)
 
     logging.warning('Done')
-    torch.distributed.barrier()
+    # torch.distributed.barrier()
     cleanup_dist()
 
 
@@ -633,11 +636,16 @@ def main():
     args = parser.parse_args()
     world_size = args.world_size
     assert world_size >= 1
-    mp.spawn(run, args=(world_size, args), nprocs=world_size, join=True)
+    # Why spawn if only one thing?
+    assert world_size == 1
+    run(0, world_size, args)
+    # mp.spawn(run, args=(world_size, args), nprocs=world_size, join=True)
 
 
 torch.set_num_threads(1)
 torch.set_num_interop_threads(1)
+# torch.cuda.set_per_process_memory_fraction(1.0, device=None)
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
     main()

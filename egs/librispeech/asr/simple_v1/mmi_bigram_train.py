@@ -173,7 +173,8 @@ def train_one_epoch(dataloader: torch.utils.data.DataLoader,
     prev_timestamp = datetime.now()
 
     model.train()
-    for batch_idx, batch in enumerate(dataloader):
+    import tqdm
+    for batch_idx, batch in enumerate(tqdm.tqdm(dataloader)):
         global_batch_idx_train += 1
         timestamp = datetime.now()
         time_waiting_for_batch += (timestamp - prev_timestamp).total_seconds()
@@ -452,6 +453,7 @@ def main():
                             model=model,
                             optimizer=None,
                             scheduler=None,
+                            scaler=None,
                             epoch=epoch,
                             learning_rate=curr_learning_rate,
                             objf=objf,
@@ -474,6 +476,7 @@ def main():
                         model=model,
                         optimizer=optimizer,
                         scheduler=lr_scheduler,
+                        scaler=None,
                         epoch=epoch,
                         learning_rate=curr_learning_rate,
                         objf=objf,

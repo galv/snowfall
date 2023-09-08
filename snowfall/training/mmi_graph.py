@@ -135,6 +135,7 @@ class MmiTrainingGraphCompiler(object):
             indexes = torch.zeros(len(texts),
                                   dtype=torch.int32,
                                   device=self.device)
+            # What does this mean?
             den = k2.index_fsa(ctc_topo_P_vec, indexes)
         else:
             den = ctc_topo_P_vec

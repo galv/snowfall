@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/home/dgalvez/code/asr/snowfall/egs/librispeech/asr/simple_v1/./mmi_att_transformer_train.py", line 650, in <module>
+    
+  File "/home/dgalvez/code/asr/snowfall/egs/librispeech/asr/simple_v1/./mmi_att_transformer_train.py", line 641, in main
+    # Why spawn if only one thing?
+  File "/home/dgalvez/code/asr/snowfall/egs/librispeech/asr/simple_v1/./mmi_att_transformer_train.py", line 557, in run
+    
+  File "/home/dgalvez/code/asr/snowfall/egs/librispeech/asr/simple_v1/./mmi_att_transformer_train.py", line 293, in train_one_epoch
+    
+  File "/home/dgalvez/code/asr/snowfall/egs/librispeech/asr/simple_v1/./mmi_att_transformer_train.py", line 160, in get_validation_objf
+    objf, frames, all_frames = get_objf(
+  File "/home/dgalvez/code/asr/snowfall/egs/librispeech/asr/simple_v1/./mmi_att_transformer_train.py", line 103, in get_objf
+    mmi_loss, tot_frames, all_frames = loss_fn(nnet_output, texts, supervision_segments)
+  File "/home/dgalvez/miniconda3/lib/python3.9/site-packages/torch/nn/modules/module.py", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/home/dgalvez/code/asr/snowfall/snowfall/objectives/mmi.py", line 80, in forward
+    num_den_lats = k2.intersect_dense(num_den_reordered_graphs,
+  File "/home/dgalvez/code/asr/k2/k2/python/k2/autograd.py", line 768, in intersect_dense
+    _IntersectDenseFunction.apply(a_fsas, b_fsas, out_fsa, output_beam,
+  File "/home/dgalvez/code/asr/k2/k2/python/k2/autograd.py", line 538, in forward
+    ragged_arc, arc_map_a, arc_map_b = _k2.intersect_dense(

@@ -194,9 +194,9 @@ def train_one_epoch(dataloader: torch.utils.data.DataLoader,
             tb_writer.add_scalar('train/current_batch_average_objf',
                                  curr_batch_objf / (curr_batch_frames + 0.001),
                                  global_batch_idx_train)
-            # if batch_idx >= 10:
-            #    print("Exiting early to get profile info")
-            #    sys.exit(0)
+            if batch_idx >= 100:
+               print("Exiting early to get profile info")
+               sys.exit(0)
 
         if batch_idx > 0 and batch_idx % 200 == 0:
             total_valid_objf, total_valid_frames, total_valid_all_frames = get_validation_objf(
@@ -223,7 +223,7 @@ def main():
     fix_random_seed(42)
 
     start_epoch = 0
-    num_epochs = 8
+    num_epochs = 1
 
     exp_dir = 'exp-lstm-adam-ctc-musan'
     setup_logger('{}/log/log-train'.format(exp_dir))
